@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript">
+$(document).ready(function(){
+    $('#select_all').on('click',function(){
+        if(this.checked){
+            $('.checkbox').each(function(){
+                this.checked = true;
+            });
+        }else{
+             $('.checkbox').each(function(){
+                this.checked = false;
+            });
+        }
+    });
+    
+    $('.checkbox').on('click',function(){
+        if($('.checkbox:checked').length == $('.checkbox').length){
+            $('#select_all').prop('checked',true);
+        }else{
+            $('#select_all').prop('checked',false);
+        }
+    });
+});
+function search_user() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchbar");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("usertable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+} 
+function deleteRow(tr) {
+  var i = tr.parentNode.parentNode.rowIndex;
+  document.getElementById("usertable").deleteRow(i);
+}
+function deleteSelectedRows() {
+  var table = document.getElementById("usertable");
+  var checkboxes = table.getElementsByClassName("checkbox");
+
+  for (var i = checkboxes.length-1; i >= 0; i--) {
+    if (checkboxes[i].checked) {
+      table.deleteRow(i + 1); 
+    }
+}
+}
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Management App</title>
+<link rel="shortcut icon" href="https://www.zoodigital.com/wp-content/themes/zoo/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="data.css">
+</head>
+<body>
+<h1>Data Management App</h1>
+<div class="search-container">
+  <input type="text" id="searchbar" onkeyup="search_user()" placeholder="Search name...">
+</div>
+<table id="usertable">
+ <tr>
+ <th><input type="checkbox" id="select_all"   >Select</th>
+<th> Name</th>
+<th> Email</th>
+<th> role</th>
+<th> Actions</th>
+ </tr>
+<tbody>
+ <tr>
+ <td><input type="checkbox" class="checkbox" value="1"></td>
+<td class="user"> Aaron Miles</td>
+<td> aaron@mailinator.com</td>
+<td> member</td>
+<td><button class="action-btn edit-btn">&#128221;</button>
+<button class="action-btn delete-btn" onclick="deleteRow(this)"><b>X</b></button>
+</td>
+ </tr>
+ <tr>
+ <td><input type="checkbox" class="checkbox" value="2"></td>
+<td class="user"> Aishwaraya Naik</td>
+<td> aishwarya@mailinator.com</td>
+<td> member</td>
+<td><button class="action-btn edit-btn">&#128221</button>
+<button class="action-btn delete-btn" onclick="deleteRow(this)"><b>X</b></button>
+</td>
+ </tr>
+ <tr>
+ <td><input type="checkbox" class="checkbox" value="3"></td>
+<td class="user"> Arvind Kumar</td>
+<td> arvind@mailinator.com</td>
+<td> admin</td>
+<td><button class="action-btn edit-btn">&#128221;</button>
+<button class="action-btn delete-btn" onclick="deleteRow(this)"><b>X</b></button>
+</td>
+ </tr>
+ <tr>
+ <td><input type="checkbox" class="checkbox" value="4"></td>
+<td class="user"> Caterina Binotto</td>
+<td> caterina@mailinator.com</td>
+<td> member</td>
+<td><button class="action-btn edit-btn">&#128221;</button>
+<button class="action-btn delete-btn" onclick="deleteRow(this)"><b>X</b></button>
+</td>
+ </tr>
+ <tr>
+ <td><input type="checkbox" class="checkbox" value="5"></td>
+<td class="user"> Chetan Kumar</td>
+<td> chetan@mailinator.com</td>
+<td> member</td>
+<td><button class="action-btn edit-btn">&#128221;</button>
+<button class="action-btn delete-btn" onclick="deleteRow(this)"><b>X</b></button>
+</td>
+ </tr>
+ <tr>
+ <td><input type="checkbox" class="checkbox" value="6"></td>
+<td> Jim McClain</td>
+<td> jim@mailinator.com</td>
+<td> member</td>
+<td><button class="action-btn edit-btn">&#128221;</button>
+<button class="action-btn delete-btn" onclick="deleteRow(this)"><b>X</b></button>
+</td>
+ </tr>
+ <tr>
+ <td><input type="checkbox"class="checkbox" value="7"></td>
+<td> Mahaver Singh</td>
+<td> mahaveer@mailinator.com</td>
+<td> member</td>
+<td><button class="action-btn edit-btn">&#128221;</button>
+<button class="action-btn delete-btn" onclick="deleteRow(this)"><b>X</b></button>
+</td>
+ </tr>
+ <tr>
+ <td><input type="checkbox" class="checkbox" value="8"></td>
+<td> Rahul Jain</td>
+<td> rahul@mailinator.com</td>
+<td> admin</td>
+<td><button class="action-btn edit-btn">&#128221;</button>
+<button class="action-btn delete-btn" onclick="deleteRow(this)"><b>X</b></button>
+</td>
+ </tr>
+ <tr>
+ <td><input type="checkbox" class="checkbox" value="9"></td>
+<td> Rizan Khan</td>
+<td> rizan@mailinator.com</td>
+<td> member</td>
+<td><button class="action-btn edit-btn">&#128221;</button>
+<button class="action-btn delete-btn" onclick="deleteRow(this)"><b>X</b></button>
+</td>
+ </tr>
+ <tr>
+ <td><input type="checkbox" class="checkbox" value="10"></td>
+<td> Sarah Potter</td>
+<td> sarah@mailinator.com</td>
+<td> admin</td>
+<td><button class="action-btn edit-btn">&#128221;</button>
+<button class="action-btn delete-btn" onclick="deleteRow(this)"><b>X</b></button>
+</td>
+ </tr>
+  </tbody>
+</table>
+
+<button class="bulk-delete-btn" onclick="deleteSelectedRows()"><b>Del Selected rows</b></button>
+
+</body>
+</html>
